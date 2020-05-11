@@ -46,3 +46,9 @@ func _on_DialogueBox_close_request():
 
 func _on_DialogueBox_resize_request(new_minsize):
 	rect_min_size = new_minsize
+
+
+func _on_Remove_button_up():
+	var lastChild: Node = get_children()[get_child_count() - 1]
+	if lastChild.get_name() != "Remove":
+		lastChild.queue_free()

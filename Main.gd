@@ -51,24 +51,28 @@ func _on_save_button_down():
 	for box in boxes:
 		if is_instance_valid(box):
 			boxData.append(box.getData())
-			print(boxData)
 	newSave.boxes = boxData
 	newSave.offset = offset
 	newSave.createdTop = createdTop
 	newSave.connections = get_connection_list()
 	newSave.boxNum = boxNum
+	
 	if first:
 		newSave.first = first.get_name()
-	print(boxData)
-#	var dir = Directory.new()
-#	if not dir.dir_exists("res://saves")
-	ResourceSaver.save("res://save.tres", newSave)
+	var dir = Directory.new()
+	if not dir.dir_exists("res://saves"):
+		dir.make_dir_recursive("res://saves")
+	var saveName: String = $Menu/saveName.text 
+	if saveName.is_valid_filename():
+		ResourceSaver.save("res://saves/" + saveName + ".tres", newSave)
 	
 
 
 func _on_open_button_up():
-	_on_new_button_up()
-	$loadTimer.start()
+	var openName: String = $Menu/openName.text 
+	if openName.is_valid_filename():
+		_on_new_button_up()
+		$loadTimer.start()
 
 
 func _on_new_button_up():
@@ -91,16 +95,18 @@ func _on_selectBeginning_button_up():
 func _on_loadTimer_timeout():
 	$loadTimer.stop()
 	var dir = Directory.new()
-	if dir.file_exists("res://save.tres"):
-		var oldSave = load("res://save.tres")
-		for box in oldSave.boxes:
-			loadBox(box)
-			loadConnections(oldSave.connections)
-		createdTop = oldSave.createdTop
-#		boxes = oldSave.boxes
-		offset = oldSave.offset
-		boxNum = oldSave.boxNum
-		first = get_node(oldSave.first)
+	var openName: String = $Menu/openName.text 
+	if openName.is_valid_filename():
+		if dir.file_exists("res://saves/" + openName + ".tres"):
+			var oldSave = load("res://saves/" + openName + ".tres")
+			for box in oldSave.boxes:
+				loadBox(box)
+				loadConnections(oldSave.connections)
+			createdTop = oldSave.createdTop
+	#		boxes = oldSave.boxes
+			offset = oldSave.offset
+			boxNum = oldSave.boxNum
+			first = get_node(oldSave.first)
 
 
 func _on_Main_delete_nodes_request():

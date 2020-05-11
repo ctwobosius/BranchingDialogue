@@ -49,18 +49,36 @@ margin_right = 192.0
 margin_bottom = 39.0
 text = "Open"
 
-[node name="save" type="Button" parent="Menu"]
+[node name="openName" type="TextEdit" parent="Menu"]
 margin_left = 196.0
-margin_right = 237.0
+margin_right = 396.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 200, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="Menu"]
+margin_left = 400.0
+margin_right = 441.0
 margin_bottom = 39.0
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="saveName" type="TextEdit" parent="Menu"]
+margin_left = 445.0
+margin_right = 645.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 200, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="export" type="Button" parent="Menu"]
-margin_left = 241.0
-margin_right = 293.0
+margin_left = 649.0
+margin_right = 701.0
 margin_bottom = 39.0
 text = "Export"
 __meta__ = {
@@ -68,8 +86,8 @@ __meta__ = {
 }
 
 [node name="selectBeginning" type="Button" parent="Menu"]
-margin_left = 297.0
-margin_right = 411.0
+margin_left = 705.0
+margin_right = 819.0
 margin_bottom = 39.0
 text = "SelectBeginning"
 __meta__ = {
@@ -77,14 +95,14 @@ __meta__ = {
 }
 
 [node name="beginning" type="Label" parent="Menu"]
-margin_left = 415.0
+margin_left = 823.0
 margin_top = 12.0
-margin_right = 415.0
+margin_right = 823.0
 margin_bottom = 26.0
 
 [node name="holdSpawn" type="CheckBox" parent="Menu"]
-margin_left = 419.0
-margin_right = 443.0
+margin_left = 827.0
+margin_right = 851.0
 margin_bottom = 39.0
 
 [node name="loadTimer" type="Timer" parent="."]
