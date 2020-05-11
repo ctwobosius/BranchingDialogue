@@ -6,10 +6,17 @@ The format for the JSON dialogue is a dictionary where each key is "d" concatena
 For example:
 
 {
+
   "d0":
+  
     ["Jim","Hello User!",{"Hi, Jim!": "d1","I don't know you.":"d2"}],
+    
   "d1":
+  
     ["Jim","Thanks for talking! Well, I have to get back to work!"],
+    
   "d2":
+  
     ["Jim","You're a rude child! I heavily dislike you!"]
+    
 }
