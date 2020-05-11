@@ -109,6 +109,7 @@ margin_bottom = 39.0
 process_mode = 0
 wait_time = 0.05
 [connection signal="connection_request" from="." to="." method="_on_Main_connection_request"]
+[connection signal="connection_to_empty" from="." to="." method="_on_Main_connection_to_empty"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_Main_delete_nodes_request"]
 [connection signal="disconnection_request" from="." to="." method="_on_Main_disconnection_request"]
 [connection signal="button_up" from="Menu/AddBox" to="." method="_on_Button_button_up"]
