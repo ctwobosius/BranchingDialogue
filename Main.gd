@@ -149,5 +149,11 @@ func _on_Main_disconnection_request(from, from_slot, to, to_slot):
 
 func _on_Main_connection_to_empty(from, from_slot, release_position):
 	for c in get_connection_list():
-		if c["to"] == from or c["from"] == from:
+		if c["from"] == from:
+			disconnect_node(c["from"], c["from_port"], c["to"], c["to_port"])
+
+
+func _on_Main_connection_from_empty(to, to_slot, release_position):
+	for c in get_connection_list():
+		if c["to"] == to:
 			disconnect_node(c["from"], c["from_port"], c["to"], c["to_port"])
