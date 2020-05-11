@@ -7,6 +7,7 @@ var createdTop: bool = false
 var boxes: Array = []
 var boxNum: int = 0
 var first: Node = null
+var connections: Dictionary = {}
 onready var holdSpawn = $ZMod/Menu/holdSpawn
 onready var saveName = $ZMod/Menu/saveName
 onready var openName = $ZMod/Menu/openName
@@ -123,30 +124,30 @@ func _on_Main_delete_nodes_request():
 
 func _on_export_button_up():
 	var data: Dictionary = {}
-	
+	var bData: Array
 	for box in boxes:
-		var bData: Array = box.getData()
+		bData = box.getData()
 		data[bData[0]] = [bData[2], bData[3]]
 
 	var connects: Array = get_connection_list()
 	var seen: Dictionary = {}
-	var seenIndices: Dictionary = {}
 	for connection in connects:
+#		print(connection)
 		var from: String = connection["from"]
-		if from in seenIndices:
-			seenIndices[from] += 1
-		else:
-			seenIndices[from] = 5
-		var index: int = seenIndices[from]
-		var response: String = get_node(from).getData()[index]
+		bData = get_node(from).getData()
+		var response: String = bData[connection["from_port"] + 5]
+#		print(response)
 		if from in seen:
 			seen[from][response] = connection["to"]
 		else:
 			seen[from] = {response: connection["to"]}
 
-
+	
 	for box in seen:
 		data[box].append(seen[box])
+#	print(" ")
+#	print(data["d1"])
+#	print(data["d11"])
 	var file = File.new()
 	if file.open("res://dialogue.json", File.WRITE) != 0:
 		print("Error opening file")

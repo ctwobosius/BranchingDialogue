@@ -48,6 +48,7 @@ func _on_DialogueBox_close_request():
 	queue_free()
 
 func _on_DialogueBox_resize_request(new_minsize):
+	rect_size = new_minsize
 	rect_min_size = new_minsize
 
 
