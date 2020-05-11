@@ -7,7 +7,10 @@ var createdTop: bool = false
 var boxes: Array = []
 var boxNum: int = 0
 var first: Node = null
-onready var holdSpawn = $Menu/holdSpawn
+onready var holdSpawn = $ZMod/Menu/holdSpawn
+onready var saveName = $ZMod/Menu/saveName
+onready var openName = $ZMod/Menu/openName
+onready var beginning = $ZMod/Menu/beginning
 signal new
 
 
@@ -62,15 +65,15 @@ func _on_save_button_down():
 	var dir = Directory.new()
 	if not dir.dir_exists("res://saves"):
 		dir.make_dir_recursive("res://saves")
-	var saveName: String = $Menu/saveName.text 
-	if saveName.is_valid_filename():
-		ResourceSaver.save("res://saves/" + saveName + ".tres", newSave)
+	var fileName: String = saveName.text 
+	if fileName.is_valid_filename():
+		ResourceSaver.save("res://saves/" + fileName + ".tres", newSave)
 	
 
 
 func _on_open_button_up():
-	var openName: String = $Menu/openName.text 
-	if openName.is_valid_filename():
+	var fileName: String = openName.text 
+	if fileName.is_valid_filename():
 		_on_new_button_up()
 		$loadTimer.start()
 
@@ -89,16 +92,16 @@ func _on_selectBeginning_button_up():
 	for box in boxes:
 		if box.selected:
 			first = box
-			$Menu/beginning.text = first.get_name()
+			beginning.text = first.get_name()
 
 
 func _on_loadTimer_timeout():
 	$loadTimer.stop()
 	var dir = Directory.new()
-	var openName: String = $Menu/openName.text 
-	if openName.is_valid_filename():
-		if dir.file_exists("res://saves/" + openName + ".tres"):
-			var oldSave = load("res://saves/" + openName + ".tres")
+	var fileName: String = openName.text 
+	if fileName.is_valid_filename():
+		if dir.file_exists("res://saves/" + fileName + ".tres"):
+			var oldSave = load("res://saves/" + fileName + ".tres")
 			for box in oldSave.boxes:
 				loadBox(box)
 				loadConnections(oldSave.connections)

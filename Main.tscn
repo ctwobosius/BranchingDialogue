@@ -17,16 +17,23 @@ __meta__ = {
 dialogueBox = ExtResource( 2 )
 save = ExtResource( 3 )
 
-[node name="Menu" type="HBoxContainer" parent="."]
+[node name="loadTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.05
+
+[node name="ZMod" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Menu" type="HBoxContainer" parent="ZMod"]
 margin_left = 222.058
 margin_top = 7.59873
-margin_right = 459.058
+margin_right = 1073.06
 margin_bottom = 47.5987
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AddBox" type="Button" parent="Menu"]
+[node name="AddBox" type="Button" parent="ZMod/Menu"]
 margin_right = 97.0
 margin_bottom = 39.0
 text = "Add Dialogue"
@@ -34,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="new" type="Button" parent="Menu"]
+[node name="new" type="Button" parent="ZMod/Menu"]
 margin_left = 101.0
 margin_right = 141.0
 margin_bottom = 39.0
@@ -43,13 +50,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="open" type="Button" parent="Menu"]
+[node name="open" type="Button" parent="ZMod/Menu"]
 margin_left = 145.0
 margin_right = 192.0
 margin_bottom = 39.0
 text = "Open"
 
-[node name="openName" type="TextEdit" parent="Menu"]
+[node name="openName" type="TextEdit" parent="ZMod/Menu"]
 margin_left = 196.0
 margin_right = 396.0
 margin_bottom = 39.0
@@ -59,7 +66,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="save" type="Button" parent="Menu"]
+[node name="save" type="Button" parent="ZMod/Menu"]
 margin_left = 400.0
 margin_right = 441.0
 margin_bottom = 39.0
@@ -68,7 +75,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="saveName" type="TextEdit" parent="Menu"]
+[node name="saveName" type="TextEdit" parent="ZMod/Menu"]
 margin_left = 445.0
 margin_right = 645.0
 margin_bottom = 39.0
@@ -77,7 +84,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="export" type="Button" parent="Menu"]
+[node name="export" type="Button" parent="ZMod/Menu"]
 margin_left = 649.0
 margin_right = 701.0
 margin_bottom = 39.0
@@ -86,7 +93,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="selectBeginning" type="Button" parent="Menu"]
+[node name="selectBeginning" type="Button" parent="ZMod/Menu"]
 margin_left = 705.0
 margin_right = 819.0
 margin_bottom = 39.0
@@ -95,29 +102,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="beginning" type="Label" parent="Menu"]
+[node name="beginning" type="Label" parent="ZMod/Menu"]
 margin_left = 823.0
 margin_top = 12.0
 margin_right = 823.0
 margin_bottom = 26.0
 
-[node name="holdSpawn" type="CheckBox" parent="Menu"]
+[node name="holdSpawn" type="CheckBox" parent="ZMod/Menu"]
 margin_left = 827.0
 margin_right = 851.0
 margin_bottom = 39.0
-
-[node name="loadTimer" type="Timer" parent="."]
-process_mode = 0
-wait_time = 0.05
 [connection signal="connection_from_empty" from="." to="." method="_on_Main_connection_from_empty"]
 [connection signal="connection_request" from="." to="." method="_on_Main_connection_request"]
 [connection signal="connection_to_empty" from="." to="." method="_on_Main_connection_to_empty"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_Main_delete_nodes_request"]
 [connection signal="disconnection_request" from="." to="." method="_on_Main_disconnection_request"]
-[connection signal="button_up" from="Menu/AddBox" to="." method="_on_Button_button_up"]
-[connection signal="button_up" from="Menu/new" to="." method="_on_new_button_up"]
-[connection signal="button_up" from="Menu/open" to="." method="_on_open_button_up"]
-[connection signal="button_down" from="Menu/save" to="." method="_on_save_button_down"]
-[connection signal="button_up" from="Menu/export" to="." method="_on_export_button_up"]
-[connection signal="button_up" from="Menu/selectBeginning" to="." method="_on_selectBeginning_button_up"]
 [connection signal="timeout" from="loadTimer" to="." method="_on_loadTimer_timeout"]
+[connection signal="button_up" from="ZMod/Menu/AddBox" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="ZMod/Menu/new" to="." method="_on_new_button_up"]
+[connection signal="button_up" from="ZMod/Menu/open" to="." method="_on_open_button_up"]
+[connection signal="button_down" from="ZMod/Menu/save" to="." method="_on_save_button_down"]
+[connection signal="button_up" from="ZMod/Menu/export" to="." method="_on_export_button_up"]
+[connection signal="button_up" from="ZMod/Menu/selectBeginning" to="." method="_on_selectBeginning_button_up"]
