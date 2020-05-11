@@ -20,3 +20,5 @@ For example:
     ["Jim","You're a rude child! I heavily dislike you!"]
     
 }
+
+Choosing "Hi, Jim!" from Response {"Hi, Jim!": "d1","I don't know you.":"d2"} leads to "d1," where Jim thanks you. Choosing "I don't know you." leads to "d2," where Jim thinks you are rude. Go figure.
