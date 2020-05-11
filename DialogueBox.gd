@@ -33,7 +33,7 @@ func setData(data: Array):
 	speaker.text = data[2]
 	text.text = data[3]
 	if data[4] > 0:
-		for option in data.slice(5, data.size()):
+		for option in data.slice(5, data.size() - 1):
 			_on_Button_button_up()
 			get_node("Option" + str(numOptions - 1)).text = option
 

@@ -28,7 +28,7 @@ __meta__ = {
 
 [node name="AddBox" type="Button" parent="Menu"]
 margin_right = 97.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "Add Dialogue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,7 +37,7 @@ __meta__ = {
 [node name="new" type="Button" parent="Menu"]
 margin_left = 101.0
 margin_right = 141.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "New"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,13 +46,13 @@ __meta__ = {
 [node name="open" type="Button" parent="Menu"]
 margin_left = 145.0
 margin_right = 192.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "Open"
 
 [node name="save" type="Button" parent="Menu"]
 margin_left = 196.0
 margin_right = 237.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,7 +61,7 @@ __meta__ = {
 [node name="export" type="Button" parent="Menu"]
 margin_left = 241.0
 margin_right = 293.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "Export"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,7 +70,7 @@ __meta__ = {
 [node name="selectBeginning" type="Button" parent="Menu"]
 margin_left = 297.0
 margin_right = 411.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 text = "SelectBeginning"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -78,18 +78,18 @@ __meta__ = {
 
 [node name="beginning" type="Label" parent="Menu"]
 margin_left = 415.0
-margin_top = 13.0
+margin_top = 12.0
 margin_right = 415.0
-margin_bottom = 27.0
+margin_bottom = 26.0
 
 [node name="holdSpawn" type="CheckBox" parent="Menu"]
 margin_left = 419.0
 margin_right = 443.0
-margin_bottom = 40.0
+margin_bottom = 39.0
 
 [node name="loadTimer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 0.1
+wait_time = 0.05
 [connection signal="connection_request" from="." to="." method="_on_Main_connection_request"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_Main_delete_nodes_request"]
 [connection signal="button_up" from="Menu/AddBox" to="." method="_on_Button_button_up"]

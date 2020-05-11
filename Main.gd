@@ -40,14 +40,10 @@ func loadBox(data: Array):
 
 func loadConnections(connections: Array):
 	for c in connections:
-		_on_Main_connection_request(c[0], c[1], c[2], c[3])
+		_on_Main_connection_request(c["from"], c["from_port"], c["to"], c["to_port"] )
 
 func _on_Main_connection_request(from, from_slot, to, to_slot):
 	connect_node(from, from_slot, to, to_slot)
-#	connections.append([from, from_slot, to, to_slot])
-
-#func _on_Main_connection_to_empty(from, from_slot, release_position):
-#	disconnect_node(from, from_slot)
 
 func _on_save_button_down():
 	var newSave = save.new()
@@ -55,6 +51,7 @@ func _on_save_button_down():
 	for box in boxes:
 		if is_instance_valid(box):
 			boxData.append(box.getData())
+			print(boxData)
 	newSave.boxes = boxData
 	newSave.offset = offset
 	newSave.createdTop = createdTop
