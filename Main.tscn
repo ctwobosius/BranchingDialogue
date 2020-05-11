@@ -110,6 +110,7 @@ process_mode = 0
 wait_time = 0.05
 [connection signal="connection_request" from="." to="." method="_on_Main_connection_request"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_Main_delete_nodes_request"]
+[connection signal="disconnection_request" from="." to="." method="_on_Main_disconnection_request"]
 [connection signal="button_up" from="Menu/AddBox" to="." method="_on_Button_button_up"]
 [connection signal="button_up" from="Menu/new" to="." method="_on_new_button_up"]
 [connection signal="button_up" from="Menu/open" to="." method="_on_open_button_up"]

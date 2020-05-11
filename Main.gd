@@ -141,3 +141,7 @@ func _on_export_button_up():
 
 	file.store_line(to_json(data))
 	file.close()
+
+
+func _on_Main_disconnection_request(from, from_slot, to, to_slot):
+	disconnect_node(from, from_slot, to, to_slot)
