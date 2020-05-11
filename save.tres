@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://save.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+boxes = [ [ "d0", Vector2( 340, 200 ), "Jim", ". . .", 2, "How did you do that", "Are you gonna kill me?" ], [ "d1", Vector2( 800, 0 ), "Jim", "Huh? Oh, I slay math problems for a living. You kinda get good after a while.", 0 ], [ "d2", Vector2( 800, 400 ), "Jim", "Pretty sure you aren't a math problem. So no.", 0 ] ]
+offset = Vector2( 1200, 0 )
+createdTop = true
+connections = [ {
+"from": "d0",
+"from_port": 1,
+"to": "d2",
+"to_port": 0
+}, {
+"from": "d0",
+"from_port": 0,
+"to": "d1",
+"to_port": 0
+} ]
+boxNum = 3
+first = ""

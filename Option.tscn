@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Option" type="TextEdit"]
+margin_left = 16.0
+margin_top = 126.0
+margin_right = 290.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 273, 75 )
+size_flags_vertical = 3
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

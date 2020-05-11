@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://DialogueBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://save.gd" type="Script" id=3]
+
+[node name="Main" type="GraphEdit"]
+margin_right = 1980.0
+margin_bottom = 1080.0
+scroll_offset = Vector2( -177.1, -78 )
+zoom = 1.1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+dialogueBox = ExtResource( 2 )
+save = ExtResource( 3 )
+
+[node name="Menu" type="HBoxContainer" parent="."]
+margin_left = 222.058
+margin_top = 7.59873
+margin_right = 459.058
+margin_bottom = 47.5987
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddBox" type="Button" parent="Menu"]
+margin_right = 97.0
+margin_bottom = 40.0
+text = "Add Dialogue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new" type="Button" parent="Menu"]
+margin_left = 101.0
+margin_right = 141.0
+margin_bottom = 40.0
+text = "New"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="open" type="Button" parent="Menu"]
+margin_left = 145.0
+margin_right = 192.0
+margin_bottom = 40.0
+text = "Open"
+
+[node name="save" type="Button" parent="Menu"]
+margin_left = 196.0
+margin_right = 237.0
+margin_bottom = 40.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="export" type="Button" parent="Menu"]
+margin_left = 241.0
+margin_right = 293.0
+margin_bottom = 40.0
+text = "Export"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selectBeginning" type="Button" parent="Menu"]
+margin_left = 297.0
+margin_right = 411.0
+margin_bottom = 40.0
+text = "SelectBeginning"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="beginning" type="Label" parent="Menu"]
+margin_left = 415.0
+margin_top = 13.0
+margin_right = 415.0
+margin_bottom = 27.0
+
+[node name="holdSpawn" type="CheckBox" parent="Menu"]
+margin_left = 419.0
+margin_right = 443.0
+margin_bottom = 40.0
+
+[node name="loadTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.1
+[connection signal="connection_request" from="." to="." method="_on_Main_connection_request"]
+[connection signal="delete_nodes_request" from="." to="." method="_on_Main_delete_nodes_request"]
+[connection signal="button_up" from="Menu/AddBox" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Menu/new" to="." method="_on_new_button_up"]
+[connection signal="button_up" from="Menu/open" to="." method="_on_open_button_up"]
+[connection signal="button_down" from="Menu/save" to="." method="_on_save_button_down"]
+[connection signal="button_up" from="Menu/export" to="." method="_on_export_button_up"]
+[connection signal="button_up" from="Menu/selectBeginning" to="." method="_on_selectBeginning_button_up"]
+[connection signal="timeout" from="loadTimer" to="." method="_on_loadTimer_timeout"]
