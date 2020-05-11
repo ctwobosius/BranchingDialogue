@@ -23,9 +23,12 @@ func _on_Button_button_up():
 func getData():
 	var data: Array = [get_name(), offset, speaker.text, text.text, numOptions]
 	for child in get_children():
-		if child.get_name().left(6) == "Option":
+		if checkIfOption(child.get_name()):
 			data += [child.text]
 	return data
+
+func checkIfOption(name: String):
+	return name.left(6) == "Option"
 
 func setData(data: Array):
 	name = data[0]
@@ -50,5 +53,5 @@ func _on_DialogueBox_resize_request(new_minsize):
 
 func _on_Remove_button_up():
 	var lastChild: Node = get_children()[get_child_count() - 1]
-	if lastChild.get_name() != "Remove":
+	if checkIfOption(lastChild.get_name()):
 		lastChild.queue_free()

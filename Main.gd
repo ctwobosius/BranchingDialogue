@@ -93,6 +93,9 @@ func _on_selectBeginning_button_up():
 		if box.selected:
 			first = box
 			beginning.text = first.get_name()
+			return
+	first = null
+	beginning.text = ""
 
 
 func _on_loadTimer_timeout():
