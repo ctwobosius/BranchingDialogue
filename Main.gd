@@ -117,23 +117,30 @@ func _on_Main_delete_nodes_request():
 
 func _on_export_button_up():
 	var data: Dictionary = {}
-	var bData: Array
+	
 	for box in boxes:
-		bData = box.getData()
+		var bData: Array = box.getData()
 		data[bData[0]] = [bData[2], bData[3]]
 
 	var connects: Array = get_connection_list()
-	var responses: Dictionary = {}
-	var i: int = 5
-	var from: String
-	var response: String
+	var seen: Dictionary = {}
+	var seenIndices: Dictionary = {}
 	for connection in connects:
-		from = connection["from"]
-		response = get_node(from).getData()[i]
-		responses[response] = connection["to"]
-		i += 1
-	data[from] += [responses]
-	
+		var from: String = connection["from"]
+		if from in seenIndices:
+			seenIndices[from] += 1
+		else:
+			seenIndices[from] = 5
+		var index: int = seenIndices[from]
+		var response: String = get_node(from).getData()[index]
+		if from in seen:
+			seen[from][response] = connection["to"]
+		else:
+			seen[from] = {response: connection["to"]}
+
+
+	for box in seen:
+		data[box].append(seen[box])
 	var file = File.new()
 	if file.open("res://dialogue.json", File.WRITE) != 0:
 		print("Error opening file")
